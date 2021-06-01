@@ -39,10 +39,12 @@ function rpsRound(playerChoice, computerChoice) {
 
 //function that runs the game; takes only the number of rounds as a parameter
 function game(rounds) {
+	//checking if rounds is a positive number > 1 and making it a whole number
+	if (typeof(rounds) !== 'number' || rounds < 1) {return 'Invalid Entry. Please  choose one or more rounds'};
+	rounds = Math.floor(rounds)
 	//declare result
 	//initialize winning message,  scores and round counter
 	let result;
-
 	let winningMessage = ''
 	let playerScore = 0;
 	let computerScore = 0;
