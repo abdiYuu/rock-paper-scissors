@@ -1,4 +1,4 @@
-function computerPlays() {
+function cpuPlays() {
 	const rock = 1;
 	const paper = 2;
 	const scissors = 3;
@@ -10,36 +10,38 @@ function computerPlays() {
 function rpsRound(e) {
 
 	if (rounds < 5) {
-		computerChoice = computerPlays();
+		cpuChoice = cpuPlays();
 		playerChoice = e.target.id;
 
-		if (playerChoice === computerChoice) {
-			play_msg.innerText = `${playerChoice} ties ${computerChoice}`;
+		if (playerChoice === cpuChoice) {
+			play_msg.innerText = `${playerChoice} ties ${cpuChoice}`;
 			playerScore+=1;
-			computerScore+=1;
+			cpuScore+=1;
 	
 
-		} else if (playerChoice === 'ROCK' && computerChoice === 'PAPER' ||
-			  playerChoice === 'PAPER' && computerChoice === 'SCISSORS' ||
-			  playerChoice === 'SCISSORS' && computerChoice === 'ROCK') {
+		} else if (playerChoice === 'ROCK' && cpuChoice === 'PAPER' ||
+			  playerChoice === 'PAPER' && cpuChoice === 'SCISSORS' ||
+			  playerChoice === 'SCISSORS' && cpuChoice === 'ROCK') {
 
-			play_msg.innerText = `PC Point. ${computerChoice} beats ${playerChoice}.`;
-			computerScore+=1;
+			play_msg.innerText = `PC Point. ${cpuChoice} beats ${playerChoice}.`;
+			cpuScore+=1;
 
-		} else if (playerChoice === 'PAPER' && computerChoice === 'ROCK' ||
-	                  playerChoice === 'SCISSORS' && computerChoice === 'PAPER' ||
-	                  playerChoice === 'ROCK' && computerChoice ==='SCISSORS') {
+		} else if (playerChoice === 'PAPER' && cpuChoice === 'ROCK' ||
+	                  playerChoice === 'SCISSORS' && cpuChoice === 'PAPER' ||
+	                  playerChoice === 'ROCK' && cpuChoice ==='SCISSORS') {
 
-			play_msg.innerText = `Your Point! ${playerChoice} beats ${computerChoice}.`;
+			play_msg.innerText = `Your Point! ${playerChoice} beats ${cpuChoice}.`;
 			playerScore+=1;
 		}
+		playerCell.innerText = playerScore;
+		cpuCell.innerText = cpuScore;
 		rounds++;
 	}
 
 	if (rounds == 5) {
 		choices.style.visibility='hidden'
-		play_msg.innerText = (playerScore > computerScore) ? 'Nice! You won!' :
-			(computerScore > playerScore) ? 'Aw. Better luck next time!' : 'A tie! Good game!';
+		play_msg.innerText = (playerScore > cpuScore) ? 'Nice! You won!' :
+			(cpuScore > playerScore) ? 'Aw. Better luck next time!' : 'A tie! Good game!';
 	}
 
 }
@@ -58,7 +60,8 @@ gameStart.addEventListener('click', game)
 
 let rounds = 0;
 let playerScore = 0;
-let computerScore = 0;
+let cpuScore = 0;
 const buttons = document.querySelectorAll('.btn__rps');
 for(let btn of buttons) {btn.addEventListener('click', rpsRound)}
-
+const playerCell = document.querySelector('#player_td');
+const cpuCell = document.querySelector('#cpu_td');
