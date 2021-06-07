@@ -4,9 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='style.css'>
     <title>Document</title>
 </head>
 <body>
+	<div class='container row'>
+		<div id='scoreboard'>
+			<table id='scores'>
+				<tr>
+					<th>Player</th>
+					<th>CPU</th>
+				</tr>
+				<tr>
+					<td id='playerScore'></td>
+					<td id='cpuScore'></td>
+				</tr>
+			</table>
+		</div>
+		<h2 class='msg__top'>Let's Play!</h2>
+		<div class='choices'>
+			<button class='btn btn__rps' id='ROCK'>Rock</button>
+			<button class='btn btn__rps' id='PAPER'>Paper</button>
+			<button class='btn btn__rps' id='SCISSORS'>Scissors</button>
+		</div>
+		<h2 class='msg__bottom'>Pick a weapon!</h2>
+	</div>
+	</div>
 	<script src='app.js'></script>    
 </body>
 </html>

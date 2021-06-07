@@ -7,32 +7,39 @@ function computerPlays() {
 
 }
 
+const win_msg = document.querySelector('.msg__top');
+const weapons = document.querySelector('.msg__bottom');
 
-function rpsRound(playerChoice, computerChoice) {
-	playerChoice = playerChoice.toUpperCase();
+function rpsRound(e) {
+	computerChoice = computerPlays();
+	playerChoice = e.target.id;
+	weapons.innerText = `${playerChoice} vs ${computerChoice}`
 
 
 	if (playerChoice === computerChoice) {
-		return `A tie! ${playerChoice} and ${computerChoice} are the same.`;
+		win_msg.innerText = `A tie!`;
 
 	}else if (playerChoice === 'ROCK' && computerChoice === 'PAPER' ||
 		  playerChoice === 'PAPER' && computerChoice === 'SCISSORS' ||
 		  playerChoice === 'SCISSORS' && computerChoice === 'ROCK') {
-		return `You lose! ${computerChoice} beats ${playerChoice}.`;
+
+		win_msg.innerText = `You lose! ${computerChoice} beats ${playerChoice}.`;
 
 	}else if (playerChoice === 'PAPER' && computerChoice === 'ROCK' ||
                   playerChoice === 'SCISSORS' && computerChoice === 'PAPER' ||
                   playerChoice === 'ROCK' && computerChoice ==='SCISSORS') {
-		return `You win! ${playerChoice} beats ${computerChoice}.`;
+
+		win_msg.innerText = `You win! ${playerChoice} beats ${computerChoice}.`;
 	
 	} else {
 		return `Error! ${playerChoice} is not a valid option. Please try again`;
 	}
 }
 
+const buttons = document.querySelectorAll('.btn__rps');
+for(let btn of buttons) {btn.addEventListener('click', rpsRound)};
 
-
-function game(rounds) {
+/*function game(rounds) {
 	if (typeof(rounds) !== 'number' || rounds < 1) {return 'Invalid Entry. Please  choose one or more rounds'};
 	rounds = Math.floor(rounds)
 	let result;
@@ -78,4 +85,4 @@ function game(rounds) {
 
 	winningMessage+=`Player: ${playerScore}\nComputer: ${computerScore}\nTotal Rounds: ${rounds}`;
 	return winningMessage;
-}
+}*/

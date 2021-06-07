@@ -1,0 +1,27 @@
+*,
+*::before.
+*::after {
+	box-sizing:border-box;
+}
+
+body {
+	margin:0;
+}
+
+.container {
+	min-height:80vh;	
+	width:80%;
+	margin:auto;
+}
+
+.row {
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+}
+
+tr, th, td {
+	border:1px solid black;
+	height:1.5rem;
+}
