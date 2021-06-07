@@ -21,7 +21,15 @@ body {
 	align-items:center;
 }
 
-tr, th, td {
+table, th, td{
 	border:1px solid black;
 	height:1.5rem;
+}
+
+table {
+
+}
+
+.choices {
+	visibility:hidden;
 }

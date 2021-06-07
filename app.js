@@ -7,82 +7,43 @@ function computerPlays() {
 
 }
 
-const win_msg = document.querySelector('.msg__top');
-const weapons = document.querySelector('.msg__bottom');
-
 function rpsRound(e) {
 	computerChoice = computerPlays();
 	playerChoice = e.target.id;
-	weapons.innerText = `${playerChoice} vs ${computerChoice}`
 
 
 	if (playerChoice === computerChoice) {
-		win_msg.innerText = `A tie!`;
+		play_msg.innerText = `A tie!`;
+		return 'tie'
 
 	}else if (playerChoice === 'ROCK' && computerChoice === 'PAPER' ||
 		  playerChoice === 'PAPER' && computerChoice === 'SCISSORS' ||
 		  playerChoice === 'SCISSORS' && computerChoice === 'ROCK') {
 
-		win_msg.innerText = `You lose! ${computerChoice} beats ${playerChoice}.`;
+		play_msg.innerText = `PC Point. ${computerChoice} beats ${playerChoice}.`;
+		return 'loss'
 
 	}else if (playerChoice === 'PAPER' && computerChoice === 'ROCK' ||
                   playerChoice === 'SCISSORS' && computerChoice === 'PAPER' ||
                   playerChoice === 'ROCK' && computerChoice ==='SCISSORS') {
 
-		win_msg.innerText = `You win! ${playerChoice} beats ${computerChoice}.`;
-	
-	} else {
-		return `Error! ${playerChoice} is not a valid option. Please try again`;
+		play_msg.innerText = `Your Point! ${playerChoice} beats ${computerChoice}.`;
+		return 'win'
 	}
 }
 
-const buttons = document.querySelectorAll('.btn__rps');
-for(let btn of buttons) {btn.addEventListener('click', rpsRound)};
+function game(e) {
+	e.target.style.display = 'none'
+	const choices = document.querySelector('.choices')
+	choices.style.visibility='visible';
 
-/*function game(rounds) {
-	if (typeof(rounds) !== 'number' || rounds < 1) {return 'Invalid Entry. Please  choose one or more rounds'};
-	rounds = Math.floor(rounds)
-	let result;
-	let winningMessage = ''
-	let playerScore = 0;
-	let computerScore = 0;
-	let counter = 1;
-	while(counter <= rounds) {
-		if (counter === 1) {
-			result = rpsRound(prompt(`Let\'s play! Round 1:\nRock, Paper, or Scissors?`), computerPlays());
-		} else if (counter ===  rounds) {
-			result = rpsRound(prompt(`Final Round:\nRock, Paper, or Scissors?`), computerPlays());
-		}else {
-			result = rpsRound(prompt(`Round ${counter}:\nRock, Paper, or Scissors?`), computerPlays());
-		}
+	const buttons = document.querySelectorAll('.btn__rps');
+	for(let btn of buttons) {btn.addEventListener('click', rpsRound)}
 
-		if (result.includes('win')) {
-			playerScore+=1;
-			counter+=1;
-		}else if (result.includes('lose')) {
-			computerScore+= 1;
-			counter+=1;
-		}else if (result.includes('tie')) {
-			computerScore+=1;
-			playerScore+=1;
-			counter+=1;
-		}else {
-			alert('Error: Invalid Choice. Please try again!');
-			counter+=0
-		}
-	}
+}
 
-	switch(true) {
-		case (playerScore > computerScore):
-			winningMessage+='You won! Good game.\n';
-			break;
-		case (computerScore > playerScore):
-			winningMessage+='You lost! Beter luck next time.\n';
-			break;
-		default:
-			winningMessage+='It was a tie! Great minds think alike!\n'
-	}
+const play_msg = document.querySelector('.msg__top');
+const weapons = document.querySelector('.msg__bottom');
 
-	winningMessage+=`Player: ${playerScore}\nComputer: ${computerScore}\nTotal Rounds: ${rounds}`;
-	return winningMessage;
-}*/
+const gameStart = document.querySelector('.btn__game');
+gameStart.addEventListener('click', game)
