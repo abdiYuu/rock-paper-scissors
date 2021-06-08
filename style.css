@@ -36,8 +36,13 @@ table, th, td{
 }
 
 table {
-
+	text-align:center;
+	font-size:1.5rem;
 }
+
+th, td {padding:1rem;}
+
+
 .msg__top {
 	width:100%;
 	text-align:center;
