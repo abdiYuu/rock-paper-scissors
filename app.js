@@ -57,6 +57,7 @@ function game(e) {
 	cpuScore = 0;
 	playerCell.innerText = playerScore
 	cpuCell.innerText = cpuScore
+	play_msg.innerText = 'Let\'s Play!'
 
 
 }
