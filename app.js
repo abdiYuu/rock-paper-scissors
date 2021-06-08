@@ -7,7 +7,7 @@ function cpuPlays() {
 
 }
 
-function rpsRound(e) {
+function singleRound(e) {
 
 	if ((playerScore < 5) && (cpuScore < 5)) {
 		cpuChoice = cpuPlays();
@@ -38,40 +38,48 @@ function rpsRound(e) {
 		rounds++;
 	}
 
-	if ((cpuScore == 5) || (playerScore == 5)) {
-		setTimeout(function() { 
-			choices.style.visibility='hidden';
-			play_msg.innerText = (playerScore > cpuScore) ? 'Nice! you won!' :
-			(cpuScore > playerScore) ? 'Aw. Better luck next time!' : 'A tie! Good game!';
-			gameStart.innerText = 'Play again?'
-			gameStart.style.visibility= 'visible';
-		}, 500)
-	}
+	if ((cpuScore == 5) || (playerScore == 5)) {setTimeout(displayWinner, 500)}
 
 }
 
-function game(e) {
-	e.target.style.visibility='hidden'
-	choices.style.visibility='visible';
+
+function displayWinner() {
+	choices.style.visibility='hidden';
+
+        play_msg.innerText = (playerScore > cpuScore) ? 'Nice! you won!' :
+        (cpuScore > playerScore) ? 'Aw. Better luck next time!' : 'A tie! Good game!';
+
+	/*also let the player choose to play again*/
+        gameStart.innerText = 'Play again?'
+        gameStart.style.visibility= 'visible';
+}
+
+function initializeGame(e) {
+
+	rounds = 0;
 	playerScore = 0;
 	cpuScore = 0;
+
+	/*initialize scoreboard*/
+	playerCell = document.querySelector('#player_td');
+        cpuCell = document.querySelector('#cpu_td');
 	playerCell.innerText = playerScore
 	cpuCell.innerText = cpuScore
+
+
+	e.target.style.visibility='hidden'
+	choices.style.visibility='visible';
+
+	const buttons = document.querySelectorAll('.btn__rps');
+	for(let btn of buttons) {btn.addEventListener('click', singleRound)}
+
 	play_msg.innerText = 'Let\'s Play!'
 
 
 }
+
+
 const choices = document.querySelector('.choices')
 const play_msg = document.querySelector('.msg__top');
-const weapons = document.querySelector('.msg__bottom');
-
 const gameStart = document.querySelector('.btn__game');
-gameStart.addEventListener('click', game)
-
-let rounds = 0;
-let playerScore = 0;
-let cpuScore = 0;
-const buttons = document.querySelectorAll('.btn__rps');
-for(let btn of buttons) {btn.addEventListener('click', rpsRound)}
-const playerCell = document.querySelector('#player_td');
-const cpuCell = document.querySelector('#cpu_td');
+gameStart.addEventListener('click', initializeGame)
