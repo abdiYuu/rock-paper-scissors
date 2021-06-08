@@ -50,7 +50,7 @@ function displayWinner() {
         (cpuScore > playerScore) ? 'Aw. Better luck next time!' : 'A tie! Good game!';
 
 	/*also let the player choose to play again*/
-        start_button.innerText = 'Play again?'
+        start_button.innerText = 'Play again!'
         start_button.style.display= 'inline-block';
 }
 

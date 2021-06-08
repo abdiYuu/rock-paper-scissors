@@ -19,7 +19,7 @@ body {
 	padding:3rem;
 	box-shadow:-1rem -1rem #0C1713;
 	border-radius:1rem;
-	max-width:530px;
+	max-width:500px;
 
 }
 
@@ -63,13 +63,15 @@ button:hover {
 
 .btn__rps {
 	margin-left:.5rem;
+}
 
-@media (max-width:500px) {
+@media (max-width:530px) {
 	.choices {
 		display:flex;
 		flex-direction:column;
 	}
-	#ROCK, #PAPER, #SCISSORS {
+	.btn__rps {
 		margin-top:.5rem;
+		margin-left:0;
 	}
 }
