@@ -9,7 +9,7 @@ function cpuPlays() {
 
 function rpsRound(e) {
 
-	if (rounds < 5) {
+	if ((playerScore < 5) && (cpuScore < 5)) {
 		cpuChoice = cpuPlays();
 		playerChoice = e.target.id;
 
@@ -38,17 +38,26 @@ function rpsRound(e) {
 		rounds++;
 	}
 
-	if (rounds == 5) {
-		choices.style.visibility='hidden'
-		play_msg.innerText = (playerScore > cpuScore) ? 'Nice! You won!' :
+	if ((cpuScore == 5) || (playerScore == 5)) {
+		setTimeout(function() { 
+			choices.style.visibility='hidden';
+			play_msg.innerText = (playerScore > cpuScore) ? 'Nice! you won!' :
 			(cpuScore > playerScore) ? 'Aw. Better luck next time!' : 'A tie! Good game!';
+			gameStart.innerText = 'Play again?'
+			gameStart.style.visibility= 'visible';
+		}, 500)
 	}
 
 }
 
 function game(e) {
-	e.target.style.display = 'none'
+	e.target.style.visibility='hidden'
 	choices.style.visibility='visible';
+	playerScore = 0;
+	cpuScore = 0;
+	playerCell.innerText = playerScore
+	cpuCell.innerText = cpuScore
+
 
 }
 const choices = document.querySelector('.choices')
