@@ -6,12 +6,19 @@
 
 body {
 	margin:0;
+	background:#D9D0DE;
 }
 
 .container {
-	min-height:80vh;	
-	width:80%;
+	width:50%;	
 	margin:auto;
+	background:#BC8DA0;
+	margin-top:10%;
+	padding:3rem;
+	box-shadow:-1rem -1rem #0C1713;
+	border-radius:1rem;
+	max-width:530px;
+
 }
 
 .row {
@@ -29,7 +36,32 @@ table, th, td{
 table {
 
 }
-
+.msg__top {
+	width:100%;
+	text-align:center;
+}
 .choices {
 	visibility:hidden;
+}
+
+button {
+	background:#A04668;
+	border:none;
+	border-radius:1.5rem;
+	padding: 1rem;
+	max-width:5rem;
+}
+
+button:hover {
+	background:#AB4967;
+}
+
+@media (max-width:500px) {
+	.choices {
+		display:flex;
+		flex-direction:column;
+	}
+	#ROCK, #PAPER, #SCISSORS {
+		margin-top:.5rem;
+	}
 }

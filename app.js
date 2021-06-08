@@ -50,8 +50,8 @@ function displayWinner() {
         (cpuScore > playerScore) ? 'Aw. Better luck next time!' : 'A tie! Good game!';
 
 	/*also let the player choose to play again*/
-        gameStart.innerText = 'Play again?'
-        gameStart.style.visibility= 'visible';
+        start_button.innerText = 'Play again?'
+        start_button.style.visibility= 'visible';
 }
 
 function initializeGame(e) {
@@ -81,5 +81,5 @@ function initializeGame(e) {
 
 const choices = document.querySelector('.choices')
 const play_msg = document.querySelector('.msg__top');
-const gameStart = document.querySelector('.btn__game');
-gameStart.addEventListener('click', initializeGame)
+const start_button = document.querySelector('.btn__game');
+start_button.addEventListener('click', initializeGame)
