@@ -51,7 +51,7 @@ function displayWinner() {
 
 	/*also let the player choose to play again*/
         start_button.innerText = 'Play again?'
-        start_button.style.visibility= 'visible';
+        start_button.style.display= 'inline-block';
 }
 
 function initializeGame(e) {
@@ -67,7 +67,7 @@ function initializeGame(e) {
 	cpuCell.innerText = cpuScore
 
 
-	e.target.style.visibility='hidden'
+	e.target.style.display='none'
 	choices.style.visibility='visible';
 
 	const buttons = document.querySelectorAll('.btn__rps');
@@ -81,5 +81,5 @@ function initializeGame(e) {
 
 const choices = document.querySelector('.choices')
 const play_msg = document.querySelector('.msg__top');
-const start_button = document.querySelector('.btn__game');
+const start_button = document.querySelector('.btn__start');
 start_button.addEventListener('click', initializeGame)

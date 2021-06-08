@@ -53,11 +53,16 @@ button {
 	padding: 1rem;
 	max-width:6rem;
 	font-weight:bold;
+	box-shadow:1px 1px 1px 1px black;
 }
 
 button:hover {
 	background:#AB4967;
+	transform:scale(1.15);
 }
+
+.btn__rps {
+	margin-left:.5rem;
 
 @media (max-width:500px) {
 	.choices {
