@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 *,
 *::before.
 *::after {
@@ -7,6 +8,7 @@
 body {
 	margin:0;
 	background:#D9D0DE;
+	font-family:'Roboto', sans-serif;
 }
 
 .container {
@@ -49,7 +51,8 @@ button {
 	border:none;
 	border-radius:1.5rem;
 	padding: 1rem;
-	max-width:5rem;
+	max-width:6rem;
+	font-weight:bold;
 }
 
 button:hover {
